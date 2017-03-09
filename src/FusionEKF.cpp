@@ -29,7 +29,7 @@ FusionEKF::FusionEKF() {
   */
   R_laser_ << 0.01, 0,
               0, 0.01;
-  R_radar_ << 0.01, 0, 0,
+  R_radar_ << 0.0225, 0, 0,
               0, 0.04, 0,
               0, 0, 0.0225;
   H_laser_ << 1, 0, 0, 0,
@@ -79,8 +79,8 @@ void FusionEKF::ProcessMeasurement(const MeasurementPackage &measurement_pack) {
     ekf_.F_ = MatrixXd(4, 4);
     ekf_.P_ << 1, 0, 0, 0,
                0, 1, 0, 0,
-               0, 0, 225, 0,
-               0, 0, 0, 225;
+               0, 0, 400, 0,
+               0, 0, 0, 400;
     ekf_.F_ << 1, 0, 1, 0,
                0, 1, 0, 1,
                0, 0, 1, 0,

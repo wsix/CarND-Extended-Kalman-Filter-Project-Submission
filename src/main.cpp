@@ -8,7 +8,6 @@
 #include "ground_truth_package.h"
 #include "measurement_package.h"
 
-using namespace std;
 using Eigen::MatrixXd;
 using Eigen::VectorXd;
 using std::vector;
