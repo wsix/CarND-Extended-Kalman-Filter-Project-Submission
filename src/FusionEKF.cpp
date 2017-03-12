@@ -28,15 +28,15 @@ FusionEKF::FusionEKF() {
     * Finish initializing the FusionEKF.
   */
   R_laser_ << 0.01, 0,
-              0, 0.01;
-  R_radar_ << 0.0225, 0, 0,
-              0, 0.04, 0,
+              0, 0.0121;
+  R_radar_ << 0.0121, 0, 0,
+              0, 0.0121, 0,
               0, 0, 0.0225;
   H_laser_ << 1, 0, 0, 0,
               0, 1, 0, 0;
 
-  noise_ax = 20;
-  noise_ay = 20;
+  noise_ax = 10;
+  noise_ay = 5;
 }
 
 /**
@@ -102,7 +102,7 @@ void FusionEKF::ProcessMeasurement(const MeasurementPackage &measurement_pack) {
      * Update the process noise covariance matrix.
   */
   float dt = (measurement_pack.timestamp_ - previous_timestamp_) / 1000000.0;	//dt - expressed in seconds
-	cout << dt << endl;
+	// cout << dt << endl;
 	previous_timestamp_ = measurement_pack.timestamp_;
 
 	float dt_2 = dt * dt;
@@ -145,6 +145,6 @@ void FusionEKF::ProcessMeasurement(const MeasurementPackage &measurement_pack) {
   }
 
   // print the output
-  cout << "x_ = " << ekf_.x_ << endl;
-  cout << "P_ = " << ekf_.P_ << endl;
+  // cout << "x_ = " << ekf_.x_ << endl;
+  // cout << "P_ = " << ekf_.P_ << endl;
 }
